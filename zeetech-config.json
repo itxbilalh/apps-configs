@@ -1,9 +1,9 @@
 {
     "ads_enabled": true,
-    "app_open_enabled": true,
+    "app_open_enabled": false,
     "banner_enabled": true,
     "rewarded_enabled": true,
-    "rewarded_interstitial_enabled": true,
+    "rewarded_interstitial_enabled": false,
     "whatsapp": {
         "enabled": true,
         "url": "https://wa.me/923064869340?text=Hello, I need Information. "
