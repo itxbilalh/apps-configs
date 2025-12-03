@@ -1,11 +1,11 @@
 {
-    "ads_enabled": true,
-    "app_open_enabled": true,
-    "banner_enabled": true,
-    "rewarded_enabled": true,
-    "rewarded_interstitial_enabled": true,
+    "ads_enabled": false,
+    "app_open_enabled": false,
+    "banner_enabled": false,
+    "rewarded_enabled": false,
+    "rewarded_interstitial_enabled": false,
     "whatsapp": {
         "enabled": true,
-        "url": "https://wa.me/923215689571?text=Hello, I need Information. "
+        "url": "https://wa.me/923225202988?text=Hello, I need Information. "
     }
 }
