@@ -1,7 +1,7 @@
 {
-    "ads_enabled": false,
-    "app_open_enabled": false,
-    "banner_enabled": false,
+    "ads_enabled": true,
+    "app_open_enabled": true,
+    "banner_enabled": true,
     "rewarded_enabled": false,
     "rewarded_interstitial_enabled": false,
     "whatsapp": {
