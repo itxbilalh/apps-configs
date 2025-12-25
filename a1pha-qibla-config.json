@@ -1,7 +1,7 @@
 {
-  "is_app_open_ad_enabled": true,
+  "is_app_open_ad_enabled": false,
   "is_banner_ad_enabled": true,
-  "is_interstitial_ad_enabled": true,
+  "is_interstitial_ad_enabled": false,
   "interstitial_ad_frequency": 4,
   "app_open_ad_id": "ca-app-pub-5434556578700380/1682124979",
   "banner_ad_id": "ca-app-pub-5434556578700380/1632548734",
