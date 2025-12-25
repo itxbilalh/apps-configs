@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM Details Finder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(79, 70, 229, 0.15) 0px, transparent 50%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-dim);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        #results {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .result-card {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .value {
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SIM Details</h1>
+    <p class="subtitle">Search by Phone Number or CNIC</p>
+    
+    <div class="input-group">
+        <input type="text" id="numberInput" placeholder="Enter number (e.g. 03001234567)" maxlength="13">
+    </div>
+    
+    <button id="searchBtn">
+        <span class="loader" id="loader"></span>
+        <span id="btnText">Search Details</span>
+    </button>
+
+    <div id="errorBox" class="error"></div>
+
+    <div id="results">
+        <div class="result-card">
+            <span class="label">Full Name</span>
+            <div id="resNames" class="value"></div>
+        </div>
+        <div class="result-card">
+            <span class="label">CNIC Number</span>
+            <div id="resCnics" class="value"></div>
+        </div>
+        <div class="result-card">
+            <span class="label">All Registered SIMs</span>
+            <div id="resNumbers" class="value"></div>
+        </div>
+        <div class="result-card">
+            <span class="label">Address Details</span>
+            <div id="resAddress" class="value"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchBtn = document.getElementById('searchBtn');
+    const loader = document.getElementById('loader');
+    const btnText = document.getElementById('btnText');
+    const resultsDiv = document.getElementById('results');
+    const errorBox = document.getElementById('errorBox');
+
+    async function fetchData(number) {
+        // We use allorigins.win as a CORS proxy since GitHub won't allow cross-domain fetch
+        // Also, running in the browser uses the USER'S IP, bypassing your server block!
+        const proxy = 'https://api.allorigins.win/get?url=';
+        const target = encodeURIComponent(`https://omrsite.com/api.php?number=${number}`);
+        
+        try {
+            const response = await fetch(proxy + target);
+            const wrapper = await response.json();
+            let data = wrapper.contents;
+
+            // Extract JSON from potential HTML garbage
+            if (data && typeof data === 'string') {
+                const start = data.indexOf('{');
+                const end = data.lastIndexOf('}');
+                if (start !== -1 && end !== -1) {
+                    return JSON.parse(data.substring(start, end + 1));
+                }
+            }
+            return data ? JSON.parse(data) : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async function fetchSecondary(number) {
+        const proxy = 'https://api.allorigins.win/get?url=';
+        const target = encodeURIComponent(`https://paksimdetails.xyz/Vigo//A/newnapi/example.php?type=mobile&search=${number}`);
+        try {
+            const response = await fetch(proxy + target);
+            const wrapper = await response.json();
+            return JSON.parse(wrapper.contents);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    searchBtn.addEventListener('click', async () => {
+        const number = document.getElementById('numberInput').value.trim();
+        if (!/^[0-9]{11,13}$/.test(number)) {
+            showError("Please enter a valid 11-13 digit number.");
+            return;
+        }
+
+        // UI State
+        errorBox.style.display = 'none';
+        resultsDiv.style.display = 'none';
+        searchBtn.disabled = true;
+        loader.style.display = 'inline-block';
+        btnText.innerText = 'Searching...';
+
+        let names = new Set();
+        let cnics = new Set();
+        let numbers = new Set();
+        let addresses = new Set();
+
+        // Multi-Source Fetch
+        const [res1, res2] = await Promise.all([
+            fetchData(number),
+            fetchSecondary(number)
+        ]);
+
+        let found = false;
+
+        // Process Source 1
+        if (res1) {
+            if (res1.name) { names.add(res1.name); found = true; }
+            if (res1.cnic) { cnics.add(res1.cnic); found = true; }
+            if (res1.address) { addresses.add(res1.address); found = true; }
+            if (res1.numbers) res1.numbers.forEach(n => numbers.add(n));
+        }
+
+        // Process Source 2
+        if (Array.isArray(res2)) {
+            res2.forEach(r => {
+                if (r.nam) { names.add(r.nam); found = true; }
+                if (r.cni) { cnics.add(r.cni); found = true; }
+                if (r.adr) { addresses.add(r.adr); found = true; }
+                if (r.nbr) { numbers.add(r.nbr); found = true; }
+            });
+        }
+
+        // Auto CNIC Expansion
+        if (found && cnics.size > 0 && number.length === 11) {
+            const firstCnic = [...cnics][0];
+            const cnicRes = await fetchData(firstCnic);
+            if (cnicRes) {
+                if (cnicRes.name) names.add(cnicRes.name);
+                if (cnicRes.address) addresses.add(cnicRes.address);
+                if (cnicRes.numbers) cnicRes.numbers.forEach(n => numbers.add(n));
+            }
+        }
+
+        // Reset UI
+        searchBtn.disabled = false;
+        loader.style.display = 'none';
+        btnText.innerText = 'Search Details';
+
+        if (found) {
+            displayResults(names, cnics, numbers, addresses);
+        } else {
+            showError("No record found for this number.");
+        }
+    });
+
+    function displayResults(names, cnics, numbers, addresses) {
+        document.getElementById('resNames').innerText = [...names].join(', ') || 'N/A';
+        document.getElementById('resCnics').innerText = [...cnics].join(', ') || 'N/A';
+        document.getElementById('resAddress').innerText = [...addresses].join(' | ') || 'N/A';
+        
+        const numContainer = document.getElementById('resNumbers');
+        numContainer.innerHTML = '';
+        if (numbers.size > 0) {
+            [...numbers].forEach(n => {
+                const span = document.createElement('span');
+                span.className = 'badge';
+                span.innerText = n;
+                numContainer.appendChild(span);
+            });
+        } else {
+            numContainer.innerText = 'N/A';
+        }
+
+        resultsDiv.style.display = 'block';
+    }
+
+    function showError(msg) {
+        errorBox.innerText = msg;
+        errorBox.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
