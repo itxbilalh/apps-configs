@@ -1,9 +1,9 @@
 {
   "open_web_in_chrome": false,
-  "ads_enabled": true,
-  "banner_ads_enabled": true,
+  "ads_enabled": false,
+  "banner_ads_enabled": false,
   "banner_ad_unit_id": "ca-app-pub-5434556578700380/3693274287",
-  "interstitial_enabled": true,
+  "interstitial_enabled": false,
   "interstitial_ad_unit_id": "ca-app-pub-5434556578700380/8188898974",
-  "interstitial_ad_interval": 5
+  "interstitial_ad_interval": 500
 }
