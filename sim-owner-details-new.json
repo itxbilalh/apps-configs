@@ -1,8 +1,8 @@
 {
-  "open_web_in_chrome": true,
   "ads_enabled": true,
   "banner_ads_enabled": true,
-  "interstitial_enabled": false,
+  "interstitial_enabled": true,
+"app_open_enabled": true,
   "interstitial_ad_interval": 5,
 "whatsapp": {
         "enabled": true,
