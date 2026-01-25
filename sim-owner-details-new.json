@@ -2,10 +2,10 @@
   "ads_enabled": true,
   "banner_ads_enabled": true,
   "interstitial_enabled": true,
-"app_open_enabled": true,
+  "app_open_enabled": true,
   "interstitial_ad_interval": 5,
-"whatsapp": {
-        "enabled": true,
-        "url": "https://wa.me/+15558572415?text=hii"
-    }
+  "whatsapp": {
+    "enabled": true,
+    "url": "https://wa.me/+15558572415?text=hii"
+  }
 }
