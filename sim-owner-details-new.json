@@ -1,0 +1,11 @@
+{
+  "open_web_in_chrome": true,
+  "ads_enabled": true,
+  "banner_ads_enabled": true,
+  "interstitial_enabled": false,
+  "interstitial_ad_interval": 5,
+"whatsapp": {
+        "enabled": true,
+        "url": "https://wa.me/+15558572415?text=hii"
+    }
+}
