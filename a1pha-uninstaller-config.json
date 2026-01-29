@@ -6,7 +6,7 @@
     "ad_unit_id": "ca-app-pub-5434556578700380/4398099213"
   },
   "banner_ad": {
-    "enabled": true,
+    "enabled": false,
     "ad_unit_id": "ca-app-pub-5434556578700380/4094072801"
   },
   "interstitial_ad": {
