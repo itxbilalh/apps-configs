@@ -2,15 +2,15 @@
   "ads_enabled": true,
   "admob_app_id": "ca-app-pub-5434556578700380~5501264060",
   "app_open_ad": {
-    "enabled": false,
+    "enabled": true,
     "ad_unit_id": "ca-app-pub-5434556578700380/4398099213"
   },
   "banner_ad": {
-    "enabled": false,
+    "enabled": true,
     "ad_unit_id": "ca-app-pub-5434556578700380/4094072801"
   },
   "interstitial_ad": {
-    "enabled": false,
+    "enabled": true,
     "ad_unit_id": "ca-app-pub-5434556578700380/8851575460"
   }
 }
