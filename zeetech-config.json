@@ -5,7 +5,7 @@
     "rewarded_enabled": true,
     "rewarded_interstitial_enabled": true,
     "whatsapp": {
-        "enabled": false
-        "url": "https://wa.me/+923493668053?text=I Need Help With Sim Details"
+        "enabled": true
+        "url": "https://wa.me/+15558091887?text=I Need Help With Sim Details"
 }
 }
