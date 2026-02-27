@@ -3,7 +3,7 @@
     "app_open_enabled": true,
     "banner_enabled": true,
     "rewarded_enabled": false,
-    "rewarded_interstitial_enabled": true,
+    "rewarded_interstitial_enabled": false,
     "whatsapp": {
         "enabled": true
         "url": "https://wa.me/+15558871218?text=I Need Help With Sim Details"
