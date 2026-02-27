@@ -2,7 +2,7 @@
     "ads_enabled": true,
     "app_open_enabled": true,
     "banner_enabled": true,
-    "rewarded_enabled": true,
+    "rewarded_enabled": false,
     "rewarded_interstitial_enabled": true,
     "whatsapp": {
         "enabled": true
