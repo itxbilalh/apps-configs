@@ -5,7 +5,11 @@
   "rewarded_enabled": false,
   "interstitial_interval": 4,
     "whatsapp": {
-        "enabled": true
-        "url": "https://wa.me/+15558871218?text=I Need Help With Sim Details"
+        "enabled": true,
+       "url": "https://wa.me/+15558871218?text=I Need Help With Sim Details",
+        "url1": "https://wa.me/+15558871218?text=I Need Help With Sim Details1",
+       "url2": "https://wa.me/+15558871218?text=I Need Help With Sim Details2",
+       "url3": "https://wa.me/+15558871218?text=I Need Help With Sim Details3",
+       "url4": "https://wa.me/+15558871218?text=I Need Help With Sim Details4",
 }
 }
