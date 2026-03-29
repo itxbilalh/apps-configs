@@ -5,7 +5,7 @@
   "app_open_enabled": true,
   "interstitial_ad_interval": 5,
   "whatsapp": {
-    "enabled": true,
+    "enabled": false,
     "url": "https://wa.me/+15558397259?text=hii"
   }
 }
