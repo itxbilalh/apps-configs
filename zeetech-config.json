@@ -6,10 +6,7 @@
   "interstitial_interval": 4,
     "whatsapp": {
         "enabled": true,
-       "url": "https://wa.me/+6285119612343?text=I Need Help With Sim Details",
-        "url1": "https://wa.me/+6285119612343?text=I Need Help With Sim Details1",
-       "url2": "https://wa.me/+6285119612343?text=I Need Help With Sim Details2",
-       "url3": "https://wa.me/+6285119612343?text=I Need Help With Sim Details3",
-       "url4": "https://wa.me/+6285119612343?text=I Need Help With Sim Details4",
-}
+       "url": "https://wa.me/+923079961339?text=I Need Help With Sim Details",
+        "url1": "https://wa.me/+923169355463?text=I Need Help With Sim Details1",
+    }
 }
